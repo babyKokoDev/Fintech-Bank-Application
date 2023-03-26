@@ -1,0 +1,27 @@
+@media screen and (max-width : 500px) {
+    .first-section1{
+         scale: 0.7;
+    }
+
+    .first-caption{
+        position: absolute;
+        top: calc(100% - 350px);
+    }
+
+    .login-details1, .login-details2{
+        scale: 0.9;
+        width: 100% !important;
+        left: 0;
+        right: 0;
+    }
+
+    .app-header{
+        scale: 0.8;
+        width: 120%;
+        margin-left: -35px;
+    }
+
+    .balance-section i, .btn{
+        scale: 0.7;
+    }
+}

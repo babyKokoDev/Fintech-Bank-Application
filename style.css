@@ -1,0 +1,88 @@
+.first-section1{
+    position: absolute;
+    top: -50px !important;
+    left: calc(100% - 210px);
+    z-index: 100000000;
+}
+
+.first-section .item1{
+    width: 100% !important;
+    height: 100vh !important;
+    background-image: url('./picture1.jpg');
+    /* background-color: rgba(0, 0, 0, 0.8) !important; */
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+
+.first-section .item1::before{
+   background-color: rgba(0, 0, 0, 0.7);
+   content: '';
+   display: block;
+   height: 100%;
+   position: absolute;
+   width: 100%;
+}
+
+.first-section .item2{
+    width: 100% !important;
+    height: 100vh !important;
+    background-image: url(./picture2.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.first-section .item2::before{
+    background-color: rgba(0, 0, 0, 0.7);
+    content: '';
+    display: block;
+    height: 100%;
+    position: absolute;
+    width: 100%;
+ }
+
+.first-section .item3{
+    width: 100% !important;
+    height: 100vh !important;
+    background-image: url(./picture3.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.first-section .item3::before{
+    background-color: rgba(0, 0, 0, 0.7);
+    content: '';
+    display: block;
+    height: 100%;
+    position: absolute;
+    width: 100%;
+ }
+
+ .first-caption{
+     position: absolute;
+     top: calc(100% - 290px);;
+ }
+
+ .btn-purple{
+     background-color: rgb(204, 13, 204) !important;
+ }
+
+ .btn-orange{
+     background-color: rgb(196, 136, 25) !important;
+ }
+
+ .login-details1{
+    position: absolute;
+    top: calc(100% - 160px);
+    z-index: 100000000;
+    left: 10%;
+    right: 10%;
+}
+
+.login-details2{
+    position: absolute;
+    top: calc(100% - 80px);
+    z-index: 100000000;
+    left: 10%;
+    right: 10%;
+}

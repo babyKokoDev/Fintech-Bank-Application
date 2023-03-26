@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link rel="stylesheet" href="./fontawesome-free-6.3.0-web/css/all.css">
+    <link href="https://fonts.googleapis.com/css2?family=Arvo:ital,wght@1,700&family=Itim&family=Kreon&family=Mynerve&family=Sofia+Sans+Semi+Condensed&display=swap" rel="stylesheet">
+</head>
+<style>
+    body {
+        background-color: #ededf5;
+        font-family: 'Kreon', serif !important;
+    }
+
+    .badge {
+        font-size: 8px !important;
+    }
+
+    .badge-noti {
+        margin-left: -25px;
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    @media screen and (max-width:500px) {
+        .transref {
+            font-size: 10px !important;
+        }
+    }
+</style>
+
+<body onload="displayScreen()">
+    <div class="p-2 d-flex justify-content-between container-fluid bg-white align-items-center mb-5">
+        <a href="dashboard.html"><i class="fa fa-less-than fa-beat-fade"></i></a>
+        <h2 style="color: #27173e; font-size: 18px;">Transactions</h2>
+        <span>
+            <button class=" btn btn-white"><i class="fa fa-hands fa-2x text-primary"></i></button>
+        </span>
+    </div>
+
+    <section class="trans-sect mb-4 container">
+        <a href="tranDetail1.html">
+            <div class="d-flex justify-content-between mb-3 bg-white p-3 align-items-center rounded-4">
+                <div class="d-flex align-items-center justify-content-center">
+                    <div class="me-3">
+                        <img src="./picture2.jpg" alt="" width="50px" height="50px" style="border-radius: 10px;">
+                    </div>
+                    <div>
+                        <h3 class="transref" style="color: orange; font-size: 16px;">TransRef :
+                            D77367A8666345383838</h3>
+                        <h5 style="color: purple; font-size: 12px;">Credit Transaction</h>
+                    </div>
+                </div>
+                <div>
+                    <h3 style="color: peru; font-size: 15px;">$14500</h3>
+                </div>
+            </div>
+        </a>
+        <a href="tranDetail2.html">
+            <div class="d-flex justify-content-between mb-3 bg-white p-3 align-items-center rounded-4">
+                <div class="d-flex align-items-center justify-content-center">
+                    <div class="me-3">
+                        <img src="./picture2.jpg" alt="" width="50px" height="50px" style="border-radius: 10px;">
+                    </div>
+                    <div>
+                        <h3 class="transref" style="color: orange; font-size: 16px;">TransRef :
+                            6F85E7A83EDC2C668D83</h3>
+                        <h5 style="color: purple; font-size: 12px;">Debit Transaction</h>
+                    </div>
+                </div>
+                <div>
+                    <h3 style="color: peru; font-size: 15px;">$1500</h3>
+                </div>
+            </div>
+        </a>
+        <a href="tranDetail3.html">
+            <div class="d-flex justify-content-between mb-3 bg-white p-3 align-items-center rounded-4">
+                <div class="d-flex align-items-center justify-content-center">
+                    <div class="me-3">
+                        <img src="./picture2.jpg" alt="" width="50px" height="50px" style="border-radius: 10px;">
+                    </div>
+                    <div>
+                        <h3 class="transref" style="color: orange; font-size: 16px;">TransRef :
+                            373625676636E662CA56</h3>
+                        <h5 style="color: purple; font-size: 12px;">Debit Transaction</h>
+                    </div>
+                </div>
+                <div>
+                    <h3 style="color: peru; font-size: 15px;">$1000</h3>
+                </div>
+            </div>
+        </a>
+
+        <div id="transDisplay"></div>
+        <div id="transferDetails"></div>
+        <div id="debitAlert"></div>
+    </section>
+
+    <script>
+        let allBankers = JSON.parse(localStorage.getItem('bankers'))
+        let userIndex = JSON.parse(localStorage.getItem('userIndex'))
+        let myTransaction = allBankers[userIndex].transactionHistory
+        let displayScreen = () => {
+            transDisplay.innerHTML = ""
+            for (let i = 0; i < myTransaction.length; i++) {
+                transDisplay.innerHTML += `<div style="cursor:pointer;" onclick = "transactionReceipt(${i})" class="d-flex justify-content-between mb-3 bg-white p-3 align-items-center rounded-4">
+            <div class="d-flex align-items-center justify-content-center">
+                <div class="me-3">
+                    <img src="./picture2.jpg" alt="" width="50px" height="50px" style="border-radius: 10px;">
+                </div>
+                <div>
+                    <h3 class="transref" style="color: orange; font-size: 16px;">TransRef : ${myTransaction[i].reference}</h3>
+                    <h5 id = "cati" style="color: purple; font-size: 12px;">${myTransaction[i].transactionCategory}</h5>
+                </div>
+            </div>
+            <div>
+                <h3 style="color: peru; font-size: 15px;">$${myTransaction[i].amount}</h3>
+            </div>
+        </div>`
+            }
+        }
+        let transactionReceipt = (index) => {
+            localStorage.setItem('receipt', JSON.stringify(index))
+            window.location.href = "tranDynamic.html"
+        }
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

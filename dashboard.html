@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link rel="stylesheet" href="./dashbaord.css">
+    <link rel="stylesheet" href="./responsive.css">
+    <link rel="stylesheet" href="./fontawesome-free-6.3.0-web/css/all.css">
+    <link href="https://fonts.googleapis.com/css2?family=Arvo:ital,wght@1,700&family=Itim&family=Kreon&family=Mynerve&family=Sofia+Sans+Semi+Condensed&display=swap" rel="stylesheet">
+</head>
+<style>
+    	body{
+		font-family: 'Kreon', serif !important;
+	}
+</style>
+<body>
+
+    <!-- Modal Section -->
+    <div id="modalBody"></div>
+    <div id="modalBody2"></div>
+    <div id="modalBody3"></div>
+    <div id="modalBody4"></div>
+    <div id="modalBody5"></div>
+    <div id="modalBody6"></div>
+    <div id="modalBody7"></div>
+    
+    <!-- Header Section -->
+    <header class="header-design">
+        <div class="d-flex app-header mt-3 container-fluid justify-content-between">
+            <div>
+                <a data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample"><i
+                        class="fa fa-sharp fa-bars fa-2x text-white"></i></a>
+            </div>
+            <div class="d-flex justify-content-center align-items-center">
+                <span class=" fa fa-flip fa-money-check-dollar fa-2x text-white me-2"></span>
+                <span class="text-white fs-4">FinTech App</span>
+            </div>
+            <div class="d-flex" style="margin-right: 15px;">
+                <span>
+                    <a href="notification.html" class="navbar-brand">
+                        <span class=" fa fa-sharp fa-regular fa-bell fa-2x text-white position-relative">
+                            <span
+                                class="position-absolute top-0 start-100 translate-middle badge  rounded-pill bg-danger" id="notibar">4
+                                <span class="visually-hidden">unread messages</span>
+                            </span>
+                        </span>
+                    </a>
+                </span>
+                <img src="./picture2.jpg" alt="" width="35px" class="rounded-2 ms-3">
+                <span
+                    class="position-absolute top-0 start-100 translate-middle badge badge-noti rounded-pill">👪
+                    <span class="visually-hidden">unread messages</span>
+                </span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Balance Section -->
+    <section class="balance-section mb-3">
+        <div class="tot-bal">
+            <p class="mt-4">Total Balance</p>
+            <p class="amount fw-bold mb-3" id="balance2"></p>
+        </div>
+        <hr>
+        <div class="container d-flex justify-content-between transaction">
+            <div class="d-flex flex-column align-items-center justify-content-center">
+                <button class="btn btn-danger mb-2" data-bs-toggle="modal" data-bs-target="#myModal"><i class="fa-solid fa-arrow-down fa-2x fa-bounce"></i></button>
+                <p>Deposit</p>
+            </div>
+            <div class="d-flex flex-column align-items-center justify-content-center">
+                <button class="btn btn-primary mb-2" data-bs-toggle="modal" data-bs-target="#myModal2"><i
+                        class="fa-solid fa-arrow-right fa-2x text-white fa-beat-fade"></i></button>
+                <p>Send</p>
+            </div>
+            <div class="d-flex flex-column align-items-center justify-content-center">
+                <button onclick="cardSection()" class="btn btn-success mb-2"><i
+                        class="fa-solid fa-credit-card fa-2x text-white fa-shake"></i></button>
+                <p>Cards</p>
+            </div>
+            <div class="d-flex flex-column align-items-center justify-content-center">
+                <button class="btn btn-warning mb-2" data-bs-toggle="modal" data-bs-target="#myModal3"><i
+                        class="fa-solid fa-arrow-right-arrow-left fa-2x text-white fa-spin"></i></button>
+                <p>Exhange</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Income $ Expenses Section -->
+    <section class="income-exp mb-4">
+        <div class="row g-3 mb-3">
+            <div class="col bg-white p-3 me-2 rounded-4">
+                <p style="font-size: 13px; color: #958d9e;" class="fw-bold">Naira</p>
+                <p style="color: #1dcc70; font-size: 26px;" class="fw-bold exChange" id="naira"></p>
+            </div>
+            <div class="col bg-white p-3 ms-2 rounded-4">
+                <p style="font-size: 13px; color: #958d9e;" class="fw-bold">Euro</p>
+                <p style="color: #ff396f; font-size: 26px;" class="fw-bold exChange" id="euro"></p>
+            </div>
+        </div>
+        <div class="row g-3">
+            <div class="col bg-white p-3 me-2 rounded-4">
+                <p style="font-size: 13px; color: #958d9e;" class="fw-bold">Pounds</p>
+                <p style="color: royalblue; font-size: 26px;" class="fw-bold exChange" id="pound"></p>
+            </div>
+            <div class="col bg-white p-3 ms-2 rounded-4">
+                <p style="font-size: 13px; color: #958d9e;" class="fw-bold">Cad</p>
+                <p style="color: purple; font-size: 26px;" class="fw-bold exChange" id="jpyen"></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Transaction History -->
+    <section class="trans-sect mb-4">
+        <div class="d-flex justify-content-between mb-2 mx-1">
+            <h2 style="color: #27173e; font-size: 22px;">Transactions</h2>
+            <a href="transactionPage.html" style="text-decoration: none;"><h5 style="color: #6236ff80; font-size: 14px;">View All</h5></a>
+        </div>
+        <a href="tranDetail1.html" style="text-decoration: none;">
+        <div class="d-flex justify-content-between mb-3 bg-white p-3 align-items-center rounded-4">
+            <div class="d-flex align-items-center justify-content-center">
+                <div class="me-3">
+                    <img src="./picture2.jpg" alt="" width="50px" height="50px" style="border-radius: 10px;">
+                </div>
+                <div>
+                    <h3 style="color: #27173e; font-size: 16px;">World Bank</h3>
+                    <h5 style="color: #958d9e; font-size: 12px;">Go fund me</h>
+                </div>
+            </div>
+            <div>
+                <h3 style="color: green; font-size: 15px;">$14500</h3>
+            </div>
+        </div>
+    </a>
+    <a href="tranDetail1.html" style="text-decoration: none;">
+        <div class="d-flex justify-content-between mb-3 bg-white p-3 align-items-center rounded-4">
+            <div class="d-flex align-items-center justify-content-center">
+                <div class="me-3">
+                    <img src="./picture2.jpg" alt="" width="50px" height="50px" style="border-radius: 10px;">
+                </div>
+                <div>
+                    <h3 style="color: #27173e; font-size: 16px;">Card Charges</h3>
+                    <h5 style="color: #958d9e; font-size: 12px;">Mastercard</h>
+                </div>
+            </div>
+            <div>
+                <h3 style="color: #ff396f; font-size: 15px;">-$1500</h3>
+            </div>
+        </div>
+        </a>
+        <a href="tranDetail1.html" style="text-decoration: none;">
+        <div class="d-flex justify-content-between mb-2 bg-white p-3 align-items-center rounded-4">
+            <div class="d-flex align-items-center justify-content-center">
+                <div class="me-3">
+                    <img src="./picture2.jpg" alt="" width="50px" height="50px" style="border-radius: 10px;">
+                </div>
+                <div>
+                    <h3 style="color: #27173e; font-size: 16px;">Maintenance Fee</h3>
+                    <h5 style="color: #958d9e; font-size: 12px;">Bug Fixes</h>
+                </div>
+            </div>
+            <div>
+                <h3 style="color: #ff396f; font-size: 15px;">-$1000</h3>
+            </div>
+        </div>
+        </a>
+    </section>
+
+    <!-- Card Section -->
+    <section class="card-sect mb-4">
+        <div>
+            <div class="d-flex justify-content-between mb-2 mx-1">
+                <h2 style="color: #27173e; font-size: 22px;">Cards</h2>
+               <a href="myCards.html" style="text-decoration: none;"><h5 style="color: #6236ff80; font-size: 14px;">View All</h5></a>
+            </div>
+            <div class="row g-3 px-2">
+                <div class="col-md p-3 d-flex justify-content-between mx-1 rounded-4"
+                    style="background-color: #6236ff;">
+                    <div>
+                        <h2 style="font-size: 12px; color: #343a40; font-weight: 700;">BALANCE</h2>
+                        <h1 style="color: #ffffff; font-size: 24px;" class="mb-4">$ 1,256,90</h1>
+                        <h2 style="font-size: 12px; color: #343a40; font-weight: 700;">CARD NUMBER</h2>
+                        <h1 style="color: #ffffff; font-size: 24px;" class="mb-4"> <i
+                                class=" fa fa-ellipsis fa-1x text-white"></i> 9905</h1>
+                        <div class="d-flex align-items-center">
+                            <div class="me-3">
+                                <h2 style="font-size: 12px; color: #343a40; font-weight: 700;">EXPIRY</h2>
+                                <h1 style="color: #ffffff; font-size: 12px;" class="mb-4">12 / 25</h1>
+                            </div>
+                            <div>
+                                <h2 style="font-size: 12px; color: #343a40; font-weight: 700;">CCV</h2>
+                                <h1 style="color: #ffffff; font-size: 12px;" class="mb-4">553</h1>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <i class=" fa fa-ellipsis fa-2x text-white"></i>
+                    </div>
+                </div>
+                <div class="col-md  p-3 d-flex justify-content-between mx-1 rounded-4"
+                    style="background-color: rgba(0, 0, 0, 0.4);">
+                    <div>
+                        <h2 style="font-size: 12px; color: #343a40; font-weight: 700;">BALANCE</h2>
+                        <h1 style="color: #ffffff; font-size: 24px;" class="mb-4">$ 1,256,90</h1>
+                        <h2 style="font-size: 12px; color: #343a40; font-weight: 700;">CARD NUMBER</h2>
+                        <h1 style="color: #ffffff; font-size: 24px;" class="mb-4"> <i
+                                class=" fa fa-ellipsis fa-1x text-white"></i> 9905</h1>
+                        <div class="d-flex align-items-center">
+                            <div class="me-3">
+                                <h2 style="font-size: 12px; color: #343a40; font-weight: 700;">EXPIRY</h2>
+                                <h1 style="color: #ffffff; font-size: 12px;" class="mb-4">12 / 25</h1>
+                            </div>
+                            <div>
+                                <h2 style="font-size: 12px; color: #343a40; font-weight: 700;">CCV</h2>
+                                <h1 style="color: #ffffff; font-size: 12px;" class="mb-4">553</h1>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <i class=" fa fa-ellipsis fa-2x text-white"></i>
+                    </div>
+                </div>
+                <div class="col p-3 d-flex justify-content-between mx-1 rounded-4" style="background-color: #27173e;">
+                    <div>
+                        <h2 style="font-size: 12px; color: #343a40; font-weight: 700;">BALANCE</h2>
+                        <h1 style="color: #ffffff; font-size: 24px;" class="mb-4">$ 1,256,90</h1>
+                        <h2 style="font-size: 12px; color: #343a40; font-weight: 700;">CARD NUMBER</h2>
+                        <h1 style="color: #ffffff; font-size: 24px;" class="mb-4"> <i
+                                class=" fa fa-ellipsis fa-1x text-white"></i> 9905</h1>
+                        <div class="d-flex align-items-center">
+                            <div class="me-3">
+                                <h2 style="font-size: 12px; color: #343a40; font-weight: 700;">EXPIRY</h2>
+                                <h1 style="color: #ffffff; font-size: 12px;" class="mb-4">12 / 25</h1>
+                            </div>
+                            <div>
+                                <h2 style="font-size: 12px; color: #343a40; font-weight: 700;">CCV</h2>
+                                <h1 style="color: #ffffff; font-size: 12px;" class="mb-4">553</h1>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <i class=" fa fa-ellipsis fa-2x text-white"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Montly Bills Section -->
+    <section class="card-sect mb-3">
+        <div class="mb-4 mx-1 text-center">
+            <h2 style="color: #27173e; font-size: 22px;">Montly Bills</h2>
+        </div>
+        <div class="row g-3 px-2">
+            <div class="col-sm bg-white rounded-4 text-center p-3 mx-1">
+                <span class="btn btn-warning mb-3"><i class="fa-brands fa-aws fa-2x"></i></span>
+                <h1 style="font-size: 22px; color: #27173e;">$ 14</h1>
+                <h5 style="color: #958d9e; font-size: 12px;" class="mb-4">Prime Monthly Subscription</h5>
+                <button class="btn px-5 text-white rounded-4" style="background-color: #6236ff;" data-bs-toggle="modal" data-bs-target="#myModal4">PAY NOW</button>
+            </div>
+            <div class="col-sm bg-white rounded-4 text-center p-3 mx-1">
+                <span class="btn btn-dark mb-3"><i class="fa-brands fa-apple fa-2x text-white"></i></span>
+                <h1 style="font-size: 22px; color: #27173e;">$ 9</h1>
+                <h5 style="color: #958d9e; font-size: 12px;" class="mb-4">Music Monthly Subscription</h5>
+                <button class=" btn px-5 text-white rounded-4" style="background-color: #6236ff;" data-bs-toggle="modal" data-bs-target="#myModal5">PAY NOW</button>
+            </div>
+            <div class="col-sm bg-white rounded-4 text-center p-3 mx-1">
+                <span class="btn btn-danger mb-3"><i class="fa fa-cart-shopping fa-2x"></i></span>
+                <h1 style="font-size: 22px; color: #27173e;">$ 299</h1>
+                <h5 style="color: #958d9e; font-size: 12px;" class="mb-4">Groceries Monthly Subscription</h5>
+                <button class="btn px-5 text-white rounded-4" style="background-color: #6236ff;" data-bs-toggle="modal" data-bs-target="#myModal6">PAY NOW</button>
+            </div>
+            <div class="col-sm bg-white rounded-4 text-center p-3 mx-1">
+                <span class="btn mb-3"><i class="fa-brands fa-cc-visa fa-3x" style="color: #6236ff;"></i></span>
+                <h1 style="font-size: 22px; color: #27173e;">$ 962</h1>
+                <h5 style="color: #958d9e; font-size: 12px;" class="mb-4">Credit Card Statemnt</h5>
+                <button class="btn px-5 text-white rounded-4" style="background-color: #6236ff;" data-bs-toggle="modal" data-bs-target="#myModal7">PAY NOW</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Saving Goals Section -->
+    <section class="card-sect mb-3 mt-3">
+        <div class="d-flex justify-content-between mb-2 mx-1">
+            <h2 style="color: #27173e; font-size: 22px;">Saving Goals</h2>
+            <a href="savingGoals.html" style="text-decoration: none;"><h5 style="color: #6236ff80; font-size: 14px;">View All</h5></a>
+        </div>
+        <div class="p-3 mx-1 bg-white rounded-4 mb-3">
+            <div class="d-flex justify-content-between">
+                <h1 style="color: #27173e; font-size: 16px;">Gaming Console</h1>
+                <h1 style="color: #27173e; font-size: 16px;">$ 500</h1>
+            </div>
+            <h4 style="font-size: 13px; color: #958d9e;" class="mb-3">Gaming</h4>
+            <div class="progress">
+                <div class="progress-bar progress-bar-striped" role="progressbar" aria-label="Example with label"
+                    style="width: 25%; background-color: #6236ff;" aria-valuenow="25" aria-valuemin="0"
+                    aria-valuemax="100">25%</div>
+            </div>
+        </div>
+        <div class="p-3 mx-1 bg-white rounded-4 mb-3">
+            <div class="d-flex justify-content-between">
+                <h1 style="color: #27173e; font-size: 16px;">New House</h1>
+                <h1 style="color: #27173e; font-size: 16px;">$ 100,000</h1>
+            </div>
+            <h4 style="font-size: 13px; color: #958d9e;" class="mb-3">Living</h4>
+            <div class="progress">
+                <div class="progress-bar progress-bar-striped" role="progressbar" aria-label="Example with label"
+                    style="width: 50%; background-color: #6236ff;" aria-valuenow="25" aria-valuemin="0"
+                    aria-valuemax="100">50%</div>
+            </div>
+        </div>
+        <div class="p-3 mx-1 bg-white rounded-4 mb-3">
+            <div class="d-flex justify-content-between">
+                <h1 style="color: #27173e; font-size: 16px;">Sport Car</h1>
+                <h1 style="color: #27173e; font-size: 16px;">$ 50,000</h1>
+            </div>
+            <h4 style="font-size: 13px; color: #958d9e;" class="mb-3">Lifestyle</h4>
+            <div class="progress">
+                <div class="progress-bar progress-bar-striped" role="progressbar" aria-label="Example with label"
+                    style="width: 75%; background-color: #6236ff;" aria-valuenow="25" aria-valuemin="0"
+                    aria-valuemax="100">75%</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Business Section -->
+    <section class="card-sect mb-3 mt-3 business-sect">
+        <div class="text-center mb-3 mx-1">
+            <h2 style="color: #27173e; font-size: 22px;">Latest News</h2>
+        </div>
+        <div class="row g-3">
+            <div class="col-sm">
+                <a target="blank"
+                    href="https://articles.bplans.com/20-business-laws-every-entrepreneur-should-be-familiar-with-in-2015/">
+                    <div class="card">
+                        <img src="./business.jpg" alt="" height="250px" class="card-img-top">
+                        <div class="card-body p-2">
+                            <p class="card-text mb-3">
+                                Rules you need to know in business
+                            </p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-sm">
+                <a href="https://incafrica.com/library/rhett-power-10-ways-make-earn-money-fast" target="blank">
+                    <div class="card">
+                        <img src="./money.jpg" alt="" height="250px" class="card-img-top">
+                        <div class="card-body p-2">
+                            <p class="card-text mb-3">
+                                Ten easy ways to save your money
+                            </p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-sm">
+                <a href="https://eforms.com/meeting-agenda/finance/#:~:text=A%20finance%20meeting%20agenda%20is,for%20the%20attendees%20to%20follow."
+                    target="blank">
+                    <div class="card">
+                        <img src="./financial agenda.jpg" alt="" height="250px" class="card-img-top">
+                        <div class="card-body p-2">
+                            <p class="card-text mb-3">
+                                Follow the financial agenda with...
+                            </p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-sm">
+                <a href="https://changelly.com/blog/bitcoin-price-prediction/" target="blank">
+                    <div class="card">
+                        <img src="./bitcoin.jpg" alt="" height="250px" class="card-img-top">
+                        <div class="card-body p-2">
+                            <p class="card-text mb-3">
+                                What will be the value of bitcoin...
+                            </p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+
+    <footer class="bg-white text-center p-3">
+        <h1 style="font-size: 15px; color: #27173e;">Copyright © Elijah Bank 2023. All Rights Reserved.</h1>
+        <h2 style="font-size: 13px; color: #958d9e;">Designed by Elijah Aremu</h1>
+    </footer>
+
+
+    <!-- Off Canvas Section -->
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel"
+        style="width: 300px;">
+        <div class="d-flex justify-content-between mt-3 px-2">
+            <div class="d-flex justify-content-center align-items-center">
+                <div style="margin-left: -10px; margin-right: 15px;"><img src="./picture2.jpg" alt="" width="40px"
+                        height="40px" class="rounded-2 ms-3"></div>
+                <div class="pt-2">
+                    <h1 style="font-size: 16px; color: #27173e;" id="firstName">Elijah Aremu</h1>
+                    <h2 style="font-size: 14px; color: #a9abad;" id="accNumber">1130376602</h2>
+                </div>
+            </div>
+            <div class="mt-3"><button type="button" class="btn-close" data-bs-dismiss="offcanvas"
+                    aria-label="Close"></button></div>
+        </div>
+        <div class="p-3 mt-3" style="background-color: #6236ff;">
+            <div>
+                <h4 style="font-size: 14px; color: #958d9e;">BALANCE</h4>
+                <h1 style="font-size: 32px; color: #ffffff;" id="balance1">$ 2,562.50</h1>
+            </div>
+            <div class="d-flex justify-content-between mt-4">
+                <div class="d-flex flex-column align-items-center justify-content-center">
+                    <button class="btn btn-offcanvas mb-2 rounded-5" data-bs-toggle="modal" data-bs-target="#myModal3"><i
+                            class="fa-solid fa-plus text-secondary"></i></button>
+                    <p style="color: #ffffffb3; font-size: 11px;">Exchange</p>
+                </div>
+                <div class="d-flex flex-column align-items-center justify-content-center">
+                    <button class="btn btn-offcanvas mb-2 rounded-5" data-bs-toggle="modal" data-bs-target="#myModal"><i
+                            class="fa-solid fa-arrow-down  text-white "></i></button>
+                    <p style="color: #ffffffb3; font-size: 11px;">Deposit</p>
+                </div>
+                <div class="d-flex flex-column align-items-center justify-content-center">
+                    <button class="btn btn-offcanvas mb-2 rounded-5" data-bs-toggle="modal" data-bs-target="#myModal2"><i
+                            class="fa-solid fa-arrow-right text-white "></i></button>
+                    <p style="color: #ffffffb3; font-size: 11px;">Send</p>
+                </div>
+                <div class="d-flex flex-column align-items-center justify-content-center">
+                    <button onclick="cardSection()" class="btn btn-offcanvas mb-2 rounded-5"><i
+                            class="fa-solid fa-credit-card text-white "></i></button>
+                    <p style="color: #ffffffb3; font-size: 11px;">My Cards</p>
+                </div>
+            </div>
+        </div>
+        <div class="mt-2 p-3">
+            <h4 style="color: #958d9e; font-size: 13px;" class="mt-2 ms-2">MENU</h4>
+            <a href="dashboard.html"><div class="d-flex justify-content-between mt-2 align-items-center p-2 mb-2">
+                <div class="d-flex align-items-center">
+                    <button class="btn rounded-5 btn-primary me-3"><i class=" fa text-white fa-puzzle-piece"></i></button>
+                    <h3 style="color: #27173e; font-size: 15px;">Overview</h3>
+                </div>
+                <div><i class="fa fa-greater-than fa-beat-fade"></i></div>
+            </div></a>
+            <a href="transactionPage.html"><div class="d-flex justify-content-between mt-2 align-items-center p-2 mb-2">
+                <div class="d-flex align-items-center">
+                    <button class="btn rounded-5 btn-primary me-3"><i
+                            class=" fa text-white fa-money-check-dollar"></i></button>
+                    <h3 style="color: #27173e; font-size: 15px;">Transactions</h3>
+                </div>
+                <div><i class="fa fa-greater-than fa-beat-fade"></i></div>
+            </div></a>
+            <a href="myCards.html"><div class="d-flex justify-content-between mt-2 align-items-center p-2 mb-2">
+                <div class="d-flex align-items-center">
+                    <button class="btn rounded-5 btn-primary me-3"><i
+                            class=" fa text-white fa-credit-card"></i></button>
+                    <h3 style="color: #27173e; font-size: 15px;">Cards</h3>
+                </div>
+                <div><i class="fa fa-greater-than fa-beat-fade"></i></div>
+            </div></a>
+            <a href="savingGoals.html"><div class="d-flex justify-content-between mt-2 align-items-center p-2 mb-2">
+                <div class="d-flex align-items-center">
+                    <button class="btn rounded-5 btn-primary me-3"><i class=" fa text-white fa-vault"></i></button>
+                    <h3 style="color: #27173e; font-size: 15px;">Saving Goals</h3>
+                </div>
+                <div><i class="fa fa-greater-than fa-beat-fade"></i></div>
+            </div></a>
+            <a href="settings.html"><div class="d-flex justify-content-between mt-2 align-items-center p-2 mb-2">
+                <div class="d-flex align-items-center">
+                    <button class="btn rounded-5 btn-primary me-3"><i class=" fa text-white fa-gear"></i></button>
+                    <h3 style="color: #27173e; font-size: 15px;">Settings</h3>
+                </div>
+                <div><i class="fa fa-greater-than fa-beat-fade"></i></div>
+            </div></a>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+        crossorigin="anonymous"></script>
+        <script src="./dashboard.js"></script>
+</body>
+
+</html>

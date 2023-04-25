@@ -1,4 +1,4 @@
-
+const myApiKey = "FctY8K6NLvHleB448t2P4wD4EewNm8DfHmYPvBD1"
 let allBankers = JSON.parse(localStorage.getItem('bankers'))
 let userIndex = JSON.parse(localStorage.getItem('userIndex'))
 
@@ -301,7 +301,7 @@ modalBody3.innerHTML = `<div id="myModal3" class="modal fade" role="dialog" tabi
                 </div>
                 </div>`
 
-let fetchApi = fetch("https://api.freecurrencyapi.com/v1/latest?apikey=FctY8K6NLvHleB448t2P4wD4EewNm8DfHmYPvBD1")
+let fetchApi = fetch(`https://api.freecurrencyapi.com/v1/latest?apikey=${myApiKey}`)
 fetchApi.then((response) => response.json().then((convertedResponse) => {
 
     document.getElementById('dollarAmount').addEventListener('keyup', () => {
@@ -321,7 +321,7 @@ fetchApi.then((response) => response.json().then((convertedResponse) => {
 }))
 
 let exchangeValue = () => {
-    let fetchApi = fetch("https://api.freecurrencyapi.com/v1/latest?apikey=FctY8K6NLvHleB448t2P4wD4EewNm8DfHmYPvBD1")
+    let fetchApi = fetch(`https://api.freecurrencyapi.com/v1/latest?apikey=${myApiKey}`)
     fetchApi.then((response) => response.json().then((convertedResponse) => {
         if (selectValue.value == "NGN") {
             myBank.Balance = parseFloat(myBank.Balance) - parseFloat(dollarAmount.value)

@@ -1,3 +1,4 @@
+
 let allBankers = JSON.parse(localStorage.getItem('bankers'))
 let userIndex = JSON.parse(localStorage.getItem('userIndex'))
 
@@ -102,11 +103,21 @@ let depositMoney = () => {
     dePosit.value = ""
     transPin.value = ""
     setTimeout(() => {
-        alert("Money Deposited Successfully")
-    }, 500);
+        Swal.fire(
+            'Transaction Successful',
+            'Click the button below to exit',
+            'success',
+          )
+    }, 300);
 
 }else {
-    alert("Incorrect transaction pin")
+    setTimeout(() => {
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Incorrect Transaction Pin',
+          })
+    }, 150);
 }
 }
 modalBody2.innerHTML = `<div id="myModal2" class="modal fade" role="dialog" tabindex="-1" aria-labelledby = "myModalLabel" aria-hidden = "true">
@@ -153,7 +164,13 @@ document.getElementById('accNumBer').addEventListener('keyup', () => {
 
 let transferMoney = () => {
     if(accNumBer.value == myBank.accNumber){
-        alert("Inconsistencies in value")
+        setTimeout(() => {
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Inconsistencies in value',
+              })
+        }, 150);
     }
     else if (transsPin.value == myBank.pIN){
     let depositPrice = parseFloat(amount.value)
@@ -170,8 +187,12 @@ let transferMoney = () => {
     }
     transsPin.value = ""
     setTimeout(() => {
-        alert("Money Transferred Successfully")
-    }, 500);
+        Swal.fire(
+            'Transaction Successful',
+            'Click the button below to exit',
+            'success',
+          )
+    }, 300);
 
     transferObject = {
         from: `${myBank.firstname} ${myBank.lastname}`,
@@ -228,7 +249,13 @@ let transferMoney = () => {
 
     
 }else{
-    alert("Inconsistencies in value")
+    setTimeout(() => {
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Inconsistencies in value',
+          })
+    }, 150);
 }
     accountName.innerHTML = ""
     amount.value = ""
@@ -361,8 +388,12 @@ let exchangeValue = () => {
         displayCurrency.innerHTML = ""
         selectValue.value = "DEF"
         setTimeout(() => {
-            alert("Exchange Made Successfully")
-        }, 500);
+            Swal.fire(
+                'Exchange Made Successfully',
+                'Click the button below to exit',
+                'success',
+              )
+        }, 300);
     }))
 }
 
@@ -432,8 +463,12 @@ let payBillss = () => {
     myNotification.push(notiObject)
     localStorage.setItem('bankers', JSON.stringify(allBankers))
     setTimeout(() => {
-        alert("Monthly Payment made Successfully")
-    }, 500);
+        Swal.fire(
+            'Monthly Payment made Successfully',
+            'Click the button below to exit',
+            'success',
+          )
+    }, 300);
 }
 
 modalBody6.innerHTML = `<div id="myModal6" class="modal fade" role="dialog" tabindex="-1" aria-labelledby = "myModalLabel" aria-hidden = "true">
@@ -467,8 +502,12 @@ let payBillsss = () => {
     myNotification.push(notiObject)
     localStorage.setItem('bankers', JSON.stringify(allBankers))
     setTimeout(() => {
-        alert("Monthly Payment made Successfully")
-    }, 500);
+        Swal.fire(
+            'Monthly Payment made Successfully',
+            'Click the button below to exit',
+            'success',
+          )
+    }, 300);
 }
 
 modalBody7.innerHTML = `<div id="myModal7" class="modal fade" role="dialog" tabindex="-1" aria-labelledby = "myModalLabel" aria-hidden = "true">
@@ -502,8 +541,12 @@ let payBillssss = () => {
     myNotification.push(notiObject)
     localStorage.setItem('bankers', JSON.stringify(allBankers))
     setTimeout(() => {
-        alert("Monthly Payment made Successfully")
-    }, 500);
+        Swal.fire(
+            'Monthly Payment made Successfully',
+            'Click the button below to exit',
+            'success',
+          )
+    }, 300);
 }
 
 
